@@ -13,7 +13,7 @@ const SPEED = 75;
   LOGIN STRUCTURE
   ----------------------------------------
 */
-const Login = ( {setIsAuthenticated} ) => {
+const Login = ( {setIsAuthenticated, BG_COLOR, FG_COLOR} ) => {
     // gestisco i dati dell'utente
     const [nome, setNome] = useState("");
     const [cognome, setCognome] = useState("");
@@ -40,7 +40,7 @@ const Login = ( {setIsAuthenticated} ) => {
     },[]);
 
     // gestisco il submit del form
-    const handleSubmit = async(e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
 
         // validazione semplice
@@ -50,14 +50,22 @@ const Login = ( {setIsAuthenticated} ) => {
         } else if (!cognome) {
             setError("Inserire il cognome");
             return;
+        } else {
+            localStorage.setItem("nome", nome);
+            localStorage.setItem("cognome", cognome);
+            setIsAuthenticated(true);
         }
-
     }
 
-    return <div className="login-container" >
+    // gestisco il click sul bottone
+    const handleClick = (e) => {
+        handleSubmit(e);
+    }
+
+    return <div className="login-container" style={{backgroundColor:`${BG_COLOR}`}} >
         <div className="login-wrapper">
-            <h2>{text}</h2>
-            {error && <p className="login-error">{error}</p>}
+            <h2 style={{color:`${FG_COLOR}`}}>{text}</h2>
+            {error && <p className="login-error">Attenzione! {error}</p>}
             
             {!isFinished ? (
                 <div></div>
@@ -65,15 +73,16 @@ const Login = ( {setIsAuthenticated} ) => {
                 <div>
                     <form id="loginForm">
                     <div>
-                        <label>Nome:</label>
+                        <label style={{color:`${FG_COLOR}`}}>Nome:</label>
                         <input type="nome" value={nome} placeholder="Mario" onChange={(e) => {setNome(e.target.value)}} />
                     </div>
                     <div>
-                        <label>Cognome:</label>
+                        <label style={{color:`${FG_COLOR}`}}>Cognome:</label>
                         <input type="cognome" value={cognome} placeholder="Rossi" onChange={(e) => {setCognome(e.target.value)}} />
                     </div>
                     </form>
-                    <button type="submit" onClick={(e) => {handleSubmit(e)}}>Accedi</button>
+                    <button type="submit" onClick={(e) => {handleClick(e)}}
+                        style={{color:`${FG_COLOR}`, border:`1px solid ${FG_COLOR}`}}>Accedi</button>
                 </div>
             )}
             

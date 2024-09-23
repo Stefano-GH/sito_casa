@@ -6,6 +6,9 @@ import { useEffect, useState } from "react";
 import Login from "./router/login/Login";
 import AppRouter from "./router/app_router/AppRouter";
 
+const BG_COLOR = "white";
+const FG_COLOR = "black";
+
 
 /*----------------------------------------
   APP  STRUCTURE
@@ -31,12 +34,14 @@ function App() {
     setIsAuthenticated(false);
   }
 
-  return <div className="App">
+  return <div>
     {!isAuthenticated ? (
-      <Login setIsAuthenticated={setIsAuthenticated}/>
+      <Login setIsAuthenticated={setIsAuthenticated} BG_COLOR={BG_COLOR}
+        FG_COLOR={FG_COLOR}/>
     ) : (
       <div>
-        <AppRouter setIsAuthenticated={setIsAuthenticated} handleLogout={handleLogout} />
+        <AppRouter handleLogout={handleLogout} BG_COLOR={BG_COLOR} 
+          FG_COLOR={FG_COLOR}/>
       </div>
     )}
   </div>
