@@ -3,18 +3,25 @@
   ----------------------------------------
 */
 //import "./AppRouter.css";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter,Routes,Route } from "react-router-dom";
 import Navbar from "../../components/navbar/Navbar";
+import Home from "../../pages/home/Home";
 
 
 /*----------------------------------------
   APP ROUTER STRUCTURE
   ----------------------------------------
 */
-const AppRouter = ( {handleLogout, BG_COLOR, FG_COLOR} ) => {
+const AppRouter = ( {handleLogout, COLOR_1, COLOR_2, COLOR_3, COLOR_4,
+  textStyle} ) => {
+
     return <BrowserRouter className="App">
-      <Navbar handleLogout={handleLogout} BG_COLOR={BG_COLOR} 
-        FG_COLOR={FG_COLOR} />
+      <Navbar handleLogout={handleLogout} COLOR_1={COLOR_1} COLOR_2={COLOR_2}
+      COLOR_3={COLOR_3} COLOR_4={COLOR_4} textStyle={textStyle}/>
+
+      <Routes>
+        <Route path="/sito_casa" element={<Home />} />
+      </Routes>
         
     </BrowserRouter>
 }

@@ -6,8 +6,10 @@ import { useEffect, useState } from "react";
 import Login from "./router/login/Login";
 import AppRouter from "./router/app_router/AppRouter";
 
-const BG_COLOR = "white";
-const FG_COLOR = "black";
+const COLOR_1 = "#7EACB5";  // ciano
+const COLOR_2 = "#FADFA1";  // giallo ocra
+const COLOR_3 = "#C96868";  // cremisi
+const COLOR_4 = "#FFF4EA";  // beige
 
 
 /*----------------------------------------
@@ -34,14 +36,21 @@ function App() {
     setIsAuthenticated(false);
   }
 
+  // gestisco lo stile dei testi
+  const textStyle = {
+    fontFamily: '"Inter", sans-serif',
+    fontStyle: "normal"
+  }
+
+
   return <div>
     {!isAuthenticated ? (
-      <Login setIsAuthenticated={setIsAuthenticated} BG_COLOR={BG_COLOR}
-        FG_COLOR={FG_COLOR}/>
+      <Login setIsAuthenticated={setIsAuthenticated} COLOR_1={COLOR_1} COLOR_2={COLOR_2}
+      COLOR_3={COLOR_3} COLOR_4={COLOR_4} textStyle={textStyle}/>
     ) : (
       <div>
-        <AppRouter handleLogout={handleLogout} BG_COLOR={BG_COLOR} 
-          FG_COLOR={FG_COLOR}/>
+        <AppRouter handleLogout={handleLogout} COLOR_1={COLOR_1} COLOR_2={COLOR_2}
+        COLOR_3={COLOR_3} COLOR_4={COLOR_4} textStyle={textStyle}/>
       </div>
     )}
   </div>

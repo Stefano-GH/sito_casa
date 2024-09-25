@@ -5,7 +5,7 @@
 import { useEffect,useState } from "react";
 import "./Login.css";
 
-const FULL_TEXT = "Benvenut* in casa De Simone-Tumino";
+const FULL_TEXT = "Benvenut*_in casa_De Simone_Tumino";  // usa il carattere _ per indicare dove andare a capo
 const SPEED = 75;
 
 
@@ -13,7 +13,9 @@ const SPEED = 75;
   LOGIN STRUCTURE
   ----------------------------------------
 */
-const Login = ( {setIsAuthenticated, BG_COLOR, FG_COLOR} ) => {
+const Login = ( {setIsAuthenticated, COLOR_1, COLOR_2, COLOR_3, COLOR_4,
+    textStyle} ) => {
+
     // gestisco i dati dell'utente
     const [nome, setNome] = useState("");
     const [cognome, setCognome] = useState("");
@@ -26,10 +28,18 @@ const Login = ( {setIsAuthenticated, BG_COLOR, FG_COLOR} ) => {
     // gestisco la scrittura del testo di benvenuto
     useEffect(() => {
         let index = 0;
+        let currentText = [];
         const writerInterval = setInterval(() => {
             if (index < FULL_TEXT.length) {
-                setText(FULL_TEXT.slice(0, index+1));
+
+                if (FULL_TEXT[index] === "_") {
+                    currentText.push(<br key={index}/>);
+                } else {
+                    currentText.push(<span key={index}>{FULL_TEXT[index]}</span>);
+                }
+                setText([...currentText]);
                 index++;
+
             } else {
                 clearInterval(writerInterval);
                 setIsFinished(true);
@@ -57,32 +67,28 @@ const Login = ( {setIsAuthenticated, BG_COLOR, FG_COLOR} ) => {
         }
     }
 
-    // gestisco il click sul bottone
-    const handleClick = (e) => {
-        handleSubmit(e);
-    }
 
-    return <div className="login-container" style={{backgroundColor:`${BG_COLOR}`}} >
+    return <div className="login-container" style={{backgroundColor:`${COLOR_1}`}}>
         <div className="login-wrapper">
-            <h2 style={{color:`${FG_COLOR}`}}>{text}</h2>
-            {error && <p className="login-error">Attenzione! {error}</p>}
+            <h2 style={{...textStyle, color:`${COLOR_2}`}}>{text}</h2>
+            {error && <p className="login-error" style={{...textStyle, fontWeight:600}}>Attenzione! {error}</p>}
             
             {!isFinished ? (
                 <div></div>
             ) : (
-                <div>
+                <div className="login-form-wrapper">
                     <form id="loginForm">
                     <div>
-                        <label style={{color:`${FG_COLOR}`}}>Nome:</label>
-                        <input type="nome" value={nome} placeholder="Mario" onChange={(e) => {setNome(e.target.value)}} />
+                        <label style={{...textStyle, color:`${COLOR_2}`}}>nome:</label>
+                        <input type="nome" value={nome} placeholder="Mario" onChange={(e) => {setNome(e.target.value)}} style={textStyle} />
                     </div>
                     <div>
-                        <label style={{color:`${FG_COLOR}`}}>Cognome:</label>
-                        <input type="cognome" value={cognome} placeholder="Rossi" onChange={(e) => {setCognome(e.target.value)}} />
+                        <label style={{...textStyle, color:`${COLOR_2}`}}>cognome:</label>
+                        <input type="cognome" value={cognome} placeholder="Rossi" onChange={(e) => {setCognome(e.target.value)}} style={textStyle} />
                     </div>
                     </form>
-                    <button type="submit" onClick={(e) => {handleClick(e)}}
-                        style={{color:`${FG_COLOR}`, border:`1px solid ${FG_COLOR}`}}>Accedi</button>
+                    <button type="submit" onClick={(e) => {handleSubmit(e)}}
+                        style={{...textStyle, border:`1px solid ${COLOR_2}`, backgroundColor:`${COLOR_2}`}}>accedi</button>
                 </div>
             )}
             

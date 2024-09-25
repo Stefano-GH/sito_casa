@@ -1,7 +1,5 @@
 nav{
-    background-color: black;
     height: 10vh;
-    color: white;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -10,8 +8,6 @@ nav{
 
 .burgerMenu{
     display: none;
-    font-size: 30px;
-    cursor: pointer;
 }
 
 @media screen and (max-width: 720px) {
@@ -22,36 +18,10 @@ nav{
         top: 70px;
         left: 0;
         width: 100%;
-        background-color: black;
     }
 
     .nav-left-wrapper.show{
         display: flex;
         flex-direction: column;
-    }
-
-    .nav-left-wrapper h5{
-        margin: 0;
-        text-align: center;
-        padding: 10px;
-        width: 100%;
-        font-size: 27px;
-    }
-
-    .burgerMenu{
-        display: block;
-    }
-
-    .burgerMenu:hover{
-        color: red;
-    }
-
-    .nav-right-wrapper{
-        font-size: 27px;
-    }
-
-    .nav-right-wrapper:hover{
-        cursor: pointer;
-        color: red;
     }
 }
