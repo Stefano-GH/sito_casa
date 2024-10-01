@@ -20,7 +20,8 @@ const AppRouter = ( {handleLogout, COLOR_1, COLOR_2, COLOR_3, COLOR_4,
       COLOR_3={COLOR_3} COLOR_4={COLOR_4} textStyle={textStyle}/>
 
       <Routes>
-        <Route path="/sito_casa" element={<Home />} />
+        <Route path="/sito_casa" element={<Home COLOR_1={COLOR_1} COLOR_2={COLOR_2}
+        COLOR_3={COLOR_3} COLOR_4={COLOR_4} textStyle={textStyle}/>} />
       </Routes>
         
     </BrowserRouter>

@@ -1,55 +1,33 @@
-.main-first-container{
-    padding-bottom: 56.25%; /* rapporto 16/9 della foto --> 9/16*100 */
+.main-first-container {
+    width: 100%;
+    height: 400px; /* Altezza della tua immagine */
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+.wave-top {
+    position: absolute;
+    bottom: 215px; /* Sovrappone leggermente l'onda all'immagine */
+    left: 0;
     width: 100%;
+    height: auto;
+    z-index: 1;
+    overflow-x: hidden;
 }
 
-.main-second-container{
-    padding: 30px 20px 40px 20px;
-    text-align: center;
+.wave-bottom {
+    position: relative;
+    bottom: -70%; /* Sovrappone leggermente l'onda all'immagine */
+    left: 0;
+    width: 100%;
+    height: auto;
+    z-index: 1;
+    overflow-x: hidden;
 }
 
-.main-second-container h2{
-    font-size: 27px
-}
-
-.main-second-container ul{
-    list-style-type: disc;
-}
-
-.main-second-container ul li{
-    font-size: 18px;
-}
-
-.main-third-container{
-    background-color: #EDE8DC;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    min-height: 250px;
-}
-
-.main-card{
-    align-items: center;
-    display: flex;
-    flex: 0 0 calc(50%-10px);
-    flex-direction: column;
-    justify-content: space-around;
-    height: 150px;
-    margin: 40px;
-    padding: 10px;
-    text-align: center;
-    width: 120px;
-}
-
-.main-card:hover{
-    color: white;
-    cursor: pointer;
-    box-shadow: 3px 3px 5px black;
-}
-
-.main-card div{
-    font-size: 70px;
+.main-second-container {
+    height: 500px;
+    padding-top: 30%;
+    color: aqua;
 }

@@ -25,10 +25,11 @@ const Navbar = ( {handleLogout, COLOR_1, COLOR_2, COLOR_3, COLOR_4, textStyle} )
     // stile condizionato del lato sinistro
     const burgerMenuStyle = {
         backgroundColor: `${COLOR_1}`,
-        color:`${COLOR_4}`,
+        color: burgerMenuHover ? `${COLOR_2}` : `${COLOR_4}`,
         cursor: burgerMenuHover ? "pointer" : "default",
         display: "block",
-        fontSize: "30px"
+        fontSize: "35px",
+        fontWeight: "bold"
     }
 
     ////////////////////
@@ -60,20 +61,21 @@ const Navbar = ( {handleLogout, COLOR_1, COLOR_2, COLOR_3, COLOR_4, textStyle} )
     // funzione che genera lo stile condizionato dei link
     const getLinkStyle = (linkHovered) => ({
         ...textStyle,
-        borderTop: `1px solid ${COLOR_2}`,
-        borderBottom: `1px solid ${COLOR_2}`,
-        color: linkHovered ? `${COLOR_2}` : `${COLOR_4}`,
+        borderTop: `1px solid ${COLOR_1}`,
+        borderBottom: `1px solid ${COLOR_1}`,
+        color: linkHovered ? `${COLOR_4}` : `${COLOR_1}`,
         cursor: linkHovered ? "pointer" : "default",
         fontSize: "27px",
         margin: 0,
         padding: "20px",
-        textAlign: "center"
+        textAlign: "center",
+        backgroundColor: linkHovered ? `${COLOR_2}` : `${COLOR_4}`
     })
 
 
     return <nav style={{backgroundColor:`${COLOR_1}`}}>
         <div className={showBurgerMenu ? "nav-left-wrapper show" : "nav-left-wrapper"}
-        style={{backgroundColor: `${COLOR_1}`}}>
+        style={{backgroundColor: `${COLOR_4}`}}>
             <h5 style={getLinkStyle(linkHovered1)} onMouseEnter={() => setLinkHovered1(true)} onMouseLeave={() => {setLinkHovered1(false)}}>
                 Regole della casa
             </h5>
@@ -95,7 +97,9 @@ const Navbar = ( {handleLogout, COLOR_1, COLOR_2, COLOR_3, COLOR_4, textStyle} )
 
         <div className="nav-right-wrapper" style={navRightWrapperStyle}
         onMouseEnter={() => setNavRightWrapperHovered(true)} onMouseLeave={() => setNavRightWrapperHovered(false)}>
-            <div onClick={handleLogout}>Ciao {nome}</div>
+            <div onClick={handleLogout}>
+                <h4>Ciao <i>{nome}</i></h4>
+            </div>
         </div>
     </nav>
 }
