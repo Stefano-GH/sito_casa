@@ -1,33 +1,22 @@
-.main-first-container {
-    width: 100%;
-    height: 400px; /* Altezza della tua immagine */
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
+@media screen and (max-width: 720px){
+    .main-first-container {
+        width: 100%;
+        height: 400px; /* Altezza della tua immagine */
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
 
-.wave-top {
-    position: absolute;
-    bottom: 215px; /* Sovrappone leggermente l'onda all'immagine */
-    left: 0;
-    width: 100%;
-    height: auto;
-    z-index: 1;
-    overflow-x: hidden;
-}
+    .wave-top {
+        position: relative;
+        bottom: -80%;
+    }
 
-.wave-bottom {
-    position: relative;
-    bottom: -70%; /* Sovrappone leggermente l'onda all'immagine */
-    left: 0;
-    width: 100%;
-    height: auto;
-    z-index: 1;
-    overflow-x: hidden;
-}
+    .main-second-container {
+        padding-top: 30%;
+    }
 
-.main-second-container {
-    height: 500px;
-    padding-top: 30%;
-    color: aqua;
+    .main-third-container{
+        height: 100px;
+    }
 }

@@ -4,6 +4,7 @@
 */
 import { useEffect,useState } from "react";
 import "./Login.css";
+import LoginData from "../../data/LoginData.js";
 
 const FULL_TEXT = "Benvenut*_in casa_De Simone_Tumino";  // usa il carattere _ per indicare dove andare a capo
 const SPEED = 75;
@@ -61,9 +62,17 @@ const Login = ( {setIsAuthenticated, COLOR_1, COLOR_2, COLOR_3, COLOR_4,
             setError("Inserire il cognome");
             return;
         } else {
+            var person = null;
+            for (var i in LoginData) {
+                if (nome === LoginData[i].nome && cognome === LoginData[i].cognome) {
+                    person = LoginData[i];
+                }
+            }
+
             localStorage.setItem("nome", nome);
             localStorage.setItem("cognome", cognome);
             setIsAuthenticated(true);
+            console.log(person);
         }
     }
 
