@@ -5,13 +5,17 @@
 import "./Navbar.css";
 import { useState } from "react";
 
+const COLOR_1 = `#${process.env.REACT_APP_COLOR_1}`;
+const COLOR_2 = `#${process.env.REACT_APP_COLOR_2}`;
+const COLOR_4 = `#${process.env.REACT_APP_COLOR_4}`;
+
 
 
 /*----------------------------------------
   NAVBAR STRUCTURE
   ----------------------------------------
 */
-const Navbar = ( {handleLogout, COLOR_1, COLOR_2, COLOR_3, COLOR_4, textStyle} ) => {
+const Navbar = ( {personData, handleLogout, textStyle} ) => {
     const [showBurgerMenu, setShowBurgerMenu] = useState(false);
     const nomeInserito = localStorage.getItem('nome');
     const nome = nomeInserito[0].toUpperCase() + nomeInserito.slice(1);
@@ -42,7 +46,6 @@ const Navbar = ( {handleLogout, COLOR_1, COLOR_2, COLOR_3, COLOR_4, textStyle} )
     const navRightWrapperStyle = {
         color: navRightWrapperHovered ? `${COLOR_2}` : `${COLOR_4}`,
         cursor: navRightWrapperHovered ? "pointer" : "default",
-        fontSize: "27px",
         margin: "0px",
         padding: "0px",
         textAlign: "center",
@@ -97,9 +100,16 @@ const Navbar = ( {handleLogout, COLOR_1, COLOR_2, COLOR_3, COLOR_4, textStyle} )
 
         <div className="nav-right-wrapper" style={navRightWrapperStyle}
         onMouseEnter={() => setNavRightWrapperHovered(true)} onMouseLeave={() => setNavRightWrapperHovered(false)}>
+            {personData ?
             <div onClick={handleLogout}>
-                <h4>Ciao <i>{nome}</i></h4>
+                <p style={{fontSize:"20px"}}>Ciao {personData.titolo}</p>
+                <h4 style={{fontSize:"27px"}}><i>{personData.nickname}</i></h4>
             </div>
+            :
+            <div onClick={handleLogout}>
+                <h4 style={{fontSize:"27px"}}>Ciao <i>{nome}</i></h4>
+            </div>
+            }
         </div>
     </nav>
 }

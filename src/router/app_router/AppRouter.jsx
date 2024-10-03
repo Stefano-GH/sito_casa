@@ -12,16 +12,13 @@ import Home from "../../pages/home/Home";
   APP ROUTER STRUCTURE
   ----------------------------------------
 */
-const AppRouter = ( {handleLogout, COLOR_1, COLOR_2, COLOR_3, COLOR_4,
-  textStyle} ) => {
+const AppRouter = ( {personData, handleLogout, textStyle} ) => {
 
     return <BrowserRouter className="App">
-      <Navbar handleLogout={handleLogout} COLOR_1={COLOR_1} COLOR_2={COLOR_2}
-      COLOR_3={COLOR_3} COLOR_4={COLOR_4} textStyle={textStyle}/>
+      <Navbar personData={personData} handleLogout={handleLogout} textStyle={textStyle}/>
 
       <Routes>
-        <Route path="/sito_casa" element={<Home COLOR_1={COLOR_1} COLOR_2={COLOR_2}
-        COLOR_3={COLOR_3} COLOR_4={COLOR_4} textStyle={textStyle}/>} />
+        <Route path="/sito_casa" element={<Home personData={personData} textStyle={textStyle}/>} />
       </Routes>
         
     </BrowserRouter>

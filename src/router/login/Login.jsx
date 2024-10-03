@@ -6,7 +6,11 @@ import { useEffect,useState } from "react";
 import "./Login.css";
 import LoginData from "../../data/LoginData.js";
 
-const FULL_TEXT = "Benvenut*_in casa_De Simone_Tumino";  // usa il carattere _ per indicare dove andare a capo
+const COLOR_1 = `#${process.env.REACT_APP_COLOR_1}`;
+const COLOR_2 = `#${process.env.REACT_APP_COLOR_2}`;
+
+const publicView = false;
+const FULL_TEXT = publicView ? "Testo di_prova di_benvenuto" : "Benvenut*_in casa_De Simone_Tumino";  // usa il carattere _ per indicare dove andare a capo
 const SPEED = 75;
 
 
@@ -14,8 +18,7 @@ const SPEED = 75;
   LOGIN STRUCTURE
   ----------------------------------------
 */
-const Login = ( {setIsAuthenticated, COLOR_1, COLOR_2, COLOR_3, COLOR_4,
-    textStyle} ) => {
+const Login = ( {setPersonData, setIsAuthenticated, textStyle} ) => {
 
     // gestisco i dati dell'utente
     const [nome, setNome] = useState("");
@@ -62,17 +65,16 @@ const Login = ( {setIsAuthenticated, COLOR_1, COLOR_2, COLOR_3, COLOR_4,
             setError("Inserire il cognome");
             return;
         } else {
-            var person = null;
+            
             for (var i in LoginData) {
                 if (nome === LoginData[i].nome && cognome === LoginData[i].cognome) {
-                    person = LoginData[i];
+                    setPersonData(LoginData[i]);
                 }
             }
 
             localStorage.setItem("nome", nome);
             localStorage.setItem("cognome", cognome);
             setIsAuthenticated(true);
-            console.log(person);
         }
     }
 
@@ -89,11 +91,11 @@ const Login = ( {setIsAuthenticated, COLOR_1, COLOR_2, COLOR_3, COLOR_4,
                     <form id="loginForm">
                     <div>
                         <label style={{...textStyle, color:`${COLOR_2}`}}>nome:</label>
-                        <input type="nome" value={nome} placeholder="Mario" onChange={(e) => {setNome(e.target.value)}} style={textStyle} />
+                        <input type="nome" value={nome} placeholder="Mario" onChange={(e) => {setNome(e.target.value.toLowerCase())}} style={textStyle} />
                     </div>
                     <div>
                         <label style={{...textStyle, color:`${COLOR_2}`}}>cognome:</label>
-                        <input type="cognome" value={cognome} placeholder="Rossi" onChange={(e) => {setCognome(e.target.value)}} style={textStyle} />
+                        <input type="cognome" value={cognome} placeholder="Rossi" onChange={(e) => {setCognome(e.target.value.toLowerCase())}} style={textStyle} />
                     </div>
                     </form>
                     <button type="submit" onClick={(e) => {handleSubmit(e)}}

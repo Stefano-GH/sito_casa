@@ -6,17 +6,13 @@ import { useEffect, useState } from "react";
 import Login from "./router/login/Login";
 import AppRouter from "./router/app_router/AppRouter";
 
-const COLOR_1 = "#7EACB5";  // ciano
-const COLOR_2 = "#FADFA1";  // giallo ocra
-const COLOR_3 = "#C96868";  // cremisi
-const COLOR_4 = "#FFF4EA";  // beige
-
 
 /*----------------------------------------
   APP  STRUCTURE
   ----------------------------------------
 */
 function App() {
+  const [personData, setPersonData] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   // verifico l'esistenza del token di autenticazione
@@ -33,6 +29,7 @@ function App() {
   const handleLogout = () => {
     localStorage.removeItem('nome');
     localStorage.removeItem('cognome');
+    setPersonData(null);
     setIsAuthenticated(false);
   }
 
@@ -45,12 +42,10 @@ function App() {
 
   return <div>
     {!isAuthenticated ? (
-      <Login setIsAuthenticated={setIsAuthenticated} COLOR_1={COLOR_1} COLOR_2={COLOR_2}
-      COLOR_3={COLOR_3} COLOR_4={COLOR_4} textStyle={textStyle}/>
+      <Login setPersonData={setPersonData} setIsAuthenticated={setIsAuthenticated} textStyle={textStyle}/>
     ) : (
       <div>
-        <AppRouter handleLogout={handleLogout} COLOR_1={COLOR_1} COLOR_2={COLOR_2}
-        COLOR_3={COLOR_3} COLOR_4={COLOR_4} textStyle={textStyle}/>
+        <AppRouter personData={personData} handleLogout={handleLogout} textStyle={textStyle}/>
       </div>
     )}
   </div>

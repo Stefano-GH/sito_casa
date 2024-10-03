@@ -6,6 +6,11 @@ nav{
     padding: 0 10px 0 10px;
 }
 
+.nav-left-wrapper{
+    display: flex;
+    flex-direction: row;
+}
+
 .burgerMenu{
     display: none;
 }
