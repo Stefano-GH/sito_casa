@@ -4,7 +4,7 @@
 */
 import { useEffect, useState } from "react";
 import Login from "./router/login/Login";
-import AppRouter from "./router/app_router/AppRouter";
+import AppRouter from "./router/AppRouter";
 
 
 /*----------------------------------------
@@ -12,9 +12,28 @@ import AppRouter from "./router/app_router/AppRouter";
   ----------------------------------------
 */
 function App() {
+
+  //////////////////////////////
+  // dimensione schermo
+  //////////////////////////////
+  const [isSmall, setIsSmall] = useState((window.innerWidth < 768));
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsSmall(window.innerWidth<768);
+    };
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize)
+    }
+  },[])
+
+  //////////////////////////////
+  // logout
+  //////////////////////////////
   const [personData, setPersonData] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-
   // verifico l'esistenza del token di autenticazione
   useEffect(() => {
     const nome = localStorage.getItem('nome');
@@ -33,19 +52,13 @@ function App() {
     setIsAuthenticated(false);
   }
 
-  // gestisco lo stile dei testi
-  const textStyle = {
-    fontFamily: '"Inter", sans-serif',
-    fontStyle: "normal"
-  }
-
 
   return <div>
     {!isAuthenticated ? (
-      <Login setPersonData={setPersonData} setIsAuthenticated={setIsAuthenticated} textStyle={textStyle}/>
+      <Login setPersonData={setPersonData} setIsAuthenticated={setIsAuthenticated}/>
     ) : (
       <div>
-        <AppRouter personData={personData} handleLogout={handleLogout} textStyle={textStyle}/>
+        <AppRouter isSmall={isSmall} personData={personData} handleLogout={handleLogout}/>
       </div>
     )}
   </div>

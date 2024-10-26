@@ -1,13 +1,13 @@
 const LoginData = [
     {
-        nome: "stefano",
-        cognome: "tumino",
+        nome: "s",
+        cognome: "t",
         nickname: "Ste",
         titolo: "Dottor",
     },
     {
-        nome: "ginevra",
-        cognome: "de simone",
+        nome: "g",
+        cognome: "d",
         nickname: "Ninni",
         titolo: "Dott.ssa Piccola",
     }

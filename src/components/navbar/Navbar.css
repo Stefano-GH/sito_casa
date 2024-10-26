@@ -3,30 +3,71 @@ nav{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 10px 0 10px;
+    padding: 0 10px;
 }
 
 .nav-left-wrapper{
+    cursor: pointer;
     display: flex;
     flex-direction: row;
+    align-items: center;
+    text-align: center;
+    font-size: 1.7em;
+    margin: 0 10px 0 20px;
+    width: 70%;
 }
 
 .burgerMenu{
     display: none;
 }
 
-@media screen and (max-width: 720px) {
+.nav-right-wrapper{
+    margin: 0 10px;
+}
+
+@media screen and (max-width: 768px) {
     .nav-left-wrapper{
         display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 70px;
-        left: 0;
-        width: 100%;
     }
 
     .nav-left-wrapper.show{
         display: flex;
         flex-direction: column;
+        position: absolute;
+        top: 77px;
+        left: 0;
+        margin: 0;
+        width: 100%;
+        align-items: center;
+    }
+
+    .nav-left-wrapper .nav-link{
+        width: 100%;
+        text-align: center;
+        padding: 1rem 0;
+        box-sizing: border-box;
+    }
+
+    .nav-right-wrapper{
+        cursor: pointer;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+        width: 40%;
+    }
+
+    .burgerMenu{
+        cursor: pointer;
+        display: block;
+        font-size: 2em;
+        font-weight: bold;
+        margin: 10px;
+    }
+}
+
+
+@media screen and (max-width: 380px) {
+    .nav-left-wrapper.show{
+        top: 70px;
     }
 }

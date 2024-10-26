@@ -81,7 +81,7 @@ const Login = ( {setPersonData, setIsAuthenticated, textStyle} ) => {
 
     return <div className="login-container" style={{backgroundColor:`${COLOR_1}`}}>
         <div className="login-wrapper">
-            <h2 style={{...textStyle, color:`${COLOR_2}`}}>{text}</h2>
+            <h2 style={{ color:`${COLOR_2}` }}>{text}</h2>
             {error && <p className="login-error" style={{...textStyle, fontWeight:600}}>Attenzione! {error}</p>}
             
             {!isFinished ? (
@@ -90,16 +90,16 @@ const Login = ( {setPersonData, setIsAuthenticated, textStyle} ) => {
                 <div className="login-form-wrapper">
                     <form id="loginForm">
                     <div>
-                        <label style={{...textStyle, color:`${COLOR_2}`}}>nome:</label>
-                        <input type="nome" value={nome} placeholder="Mario" onChange={(e) => {setNome(e.target.value.toLowerCase())}} style={textStyle} />
+                        <label style={{ color:`${COLOR_2}`}}>nome:</label>
+                        <input type="nome" value={nome} placeholder="mario" onChange={(e) => {setNome(e.target.value.toLowerCase())}} style={textStyle} />
                     </div>
                     <div>
-                        <label style={{...textStyle, color:`${COLOR_2}`}}>cognome:</label>
-                        <input type="cognome" value={cognome} placeholder="Rossi" onChange={(e) => {setCognome(e.target.value.toLowerCase())}} style={textStyle} />
+                        <label style={{ color:`${COLOR_2}`}}>cognome:</label>
+                        <input type="cognome" value={cognome} placeholder="rossi" onChange={(e) => {setCognome(e.target.value.toLowerCase())}} style={textStyle} />
                     </div>
                     </form>
                     <button type="submit" onClick={(e) => {handleSubmit(e)}}
-                        style={{...textStyle, border:`1px solid ${COLOR_2}`, backgroundColor:`${COLOR_2}`}}>accedi</button>
+                        style={{ border:`1px solid ${COLOR_2}`, backgroundColor:`${COLOR_2}`}}>accedi</button>
                 </div>
             )}
             
