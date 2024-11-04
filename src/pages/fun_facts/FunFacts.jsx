@@ -14,7 +14,7 @@ import "./FunFacts.css";
 const FunFacts = () => {
 
     return <div style={{ height:'100vh' }}>
-        <h1>Fun Facts</h1>
+        Fun facts
     </div>
 }
 

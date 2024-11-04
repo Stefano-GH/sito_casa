@@ -3,10 +3,13 @@
   ----------------------------------------
 */
 import "./Home.css";
-import BG_IMG from "../../images/cover-image.jpg";
-import { frasiBenvenuto } from "../../data/MainData";
+//import { useNavigate } from "react-router-dom";
+import BG_IMG from "../../data/images/cover-image.jpg";
+import { frasiBenvenuto, cardData } from "../../data/MainData";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import regole_img from "../../images/regole.jpeg"
+
+import GioHome from "../special_pages/gio_pages/GioHome";
+
 
 const COLOR_1 = `#${process.env.REACT_APP_COLOR_1}`;
 const COLOR_2 = `#${process.env.REACT_APP_COLOR_2}`;
@@ -20,7 +23,11 @@ const COLOR_4 = `#${process.env.REACT_APP_COLOR_4}`;
 */
 const Home = ( {personData} ) => {
 
+    //const navigate = useNavigate();
+
     return <section>
+        {personData.nome === "giovanni" && personData.cognome === "caruso" ? <GioHome /> : <div>
+
         <div className="main-first-container" style={{backgroundImage: `url(${BG_IMG})`}}>
             {/*
             <svg className="wave-top" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
@@ -42,16 +49,36 @@ const Home = ( {personData} ) => {
         </div>
 
         <div className="main-third-container" style={{backgroundColor:`${COLOR_3}`}}>
-            <div className="card-container">
-                <div className="card" style={{ backgroundColor:`${COLOR_4}`, border:`1px solid ${COLOR_4}` }}>
-                    <div className="img-card" style={{backgroundImage:`url(${regole_img})`}}></div>
+            <div className="card-grid">
+                {/*
+                <div className="card-item" style={{ backgroundColor:`${COLOR_4}`, border:'none', minHeight:'25em', borderRadius:'20px' }}>
+                    <div className="card">
+                        <div className="img-card" style={{backgroundImage:`url(${regole_img})`}}></div>
 
-                    <div className="text-card">
-                        <p style={{color:`#3C3D37`}}>regole della casa</p>
+                        <div className="text-card">
+                            <p style={{color:`#3C3D37`}}>regole della casa</p>
+                        </div>
                     </div>
-                </div>
+                </div>*/}
+
+                {cardData.map((item,index) => (
+                    <div key={index} className="card-item" style={{ backgroundColor:`${COLOR_4}`, border:'none', minHeight:'25em', borderRadius:'20px' }}>
+                        <div className="card">
+                            <div className="img-card" style={{ backgroundImage: `url(${item.img})` }}></div>
+
+                            <div className="text-card">
+                                <p style={{ color:'#3C3D37' }}>
+                                    {item.nome}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                ))}
+                
             </div>
         </div>
+
+    </div>}
     </section>
 }
 

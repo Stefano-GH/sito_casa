@@ -5,17 +5,11 @@
 import "./Navbar.css";
 import { useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
+import { navLinks as links } from "../../data/MainData";
 
 const COLOR_1 = `#${process.env.REACT_APP_COLOR_1}`;
 const COLOR_2 = `#${process.env.REACT_APP_COLOR_2}`;
 const COLOR_4 = `#${process.env.REACT_APP_COLOR_4}`;
-
-const links = [
-    { titolo:"Regole della casa", to:"/sito_casa/regole" },
-    { titolo:"I nostri gatti", to:"/sito_casa/gatti" },
-    { titolo:"Fun facts", to:"/sito_casa/funfacts" },
-    { titolo:"Nascita dell'idea", to:"sito_casa/idea" },
-]
 
 
 /*----------------------------------------
@@ -79,9 +73,9 @@ const Navbar = ( {isSmall, personData, handleLogout} ) => {
                 <NavLink key={index} className="nav-link" style={getLinkStyle(index)}
                     onMouseEnter={() => handleMouseEnter(index)}
                     onMouseLeave={() => handleMouseLeave(index)}
-                    to={item.ot}
+                    to={currentPath === item.to ? "/sito_casa" : item.to}
                 >
-                    {item.titolo}
+                    {currentPath === item.to ? "Home" : item.titolo}
                 </NavLink>
             ))}
         </div>

@@ -14,7 +14,7 @@ import "./Idea.css";
 const Idea = () => {
 
     return <div style={{ height:'100vh' }}>
-        <h1>Nascita dell'Idea</h1>
+        Nascita dell'Idea
     </div>
 }
 

@@ -14,8 +14,7 @@ import "./Gatti.css";
 const Gatti = () => {
 
     return <div style={{ height:'100vh' }}>
-        <h1>Gatti</h1>
-        <p>Non ancora implementato</p>
+        Gatti
     </div>
 }
 
